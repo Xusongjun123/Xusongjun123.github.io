@@ -4,84 +4,112 @@
 </title>
 
 <body>
-
+<p>
 刚开始接触Java的网络编程这一块，就试着写了个小东西，还没有补充完，希望有好的建议或者有需要改正的能多多提示：
-
+</p>
+<p>
 import javax.swing.*;
+</p>
+<p>
 import java.awt.*;
+</p>
+<p>
 import java.awt.event.*;
+</p>
+<p>
 import java.io.*;
-public class MyText	extends JFrame
-{
-	//可尝试加滚动条scroll
-	public MyText(){
+</p>
+<p>
+	public class MyText	extends JFrame{
+</p>
+<p>
+		//可尝试加滚动条scroll
+</p>
+<p>
+		public MyText(){
+</p>
+<p>
 		this.setLayout(null);
-		
+</p>
+<p>
 		JMenuBar jb = new JMenuBar();//菜单条
+</p>
+	<p>
 		/*JMenu jm = new JMenu();//菜单
+	</p><p>
 		jm.setText("文件");
+	</p><p>	
 		JMenuItem jt = new JMenuItem();//下拉项
+	</p><p>	
 		jt.setText("新建");
+	</p>	
+	<p>	
 		jm.add(jt);
+	</p>	
+	<p>	
 		jb.add(jm);*/
+	</p>	
+		<p>
 		JMenu caidan = new JMenu();
-		caidan.setText("文件");
-		JMenu bianji = new JMenu();
-		bianji.setText("编辑");
-		JMenu chakan = new JMenu();
-		chakan.setText("查看");
-		JMenuItem xinjian = new JMenuItem();
-		xinjian.setText("新建");
-		JMenuItem baocun = new JMenuItem();
-		baocun.setText("保存");
-		caidan.add(xinjian);
-		caidan.add(baocun);
-		jb.add(caidan);
-		jb.add(bianji);
-		jb.add(chakan);
-		this.setJMenuBar(jb);
+	</p>	
+		<p>
+		caidan.setText("文件");</p>
+		<p>JMenu bianji = new JMenu();</p>
+		<p>bianji.setText("编辑");</p>
+		<p>JMenu chakan = new JMenu();</p>
+		<p>chakan.setText("查看");</p>
+		<p>JMenuItem xinjian = new JMenuItem();</p>
+		<p>xinjian.setText("新建");</p>
+		<p>JMenuItem baocun = new JMenuItem();</p>
+		<p>baocun.setText("保存");</p>
+		<p>caidan.add(xinjian);</p>
+		<p>caidan.add(baocun);</p>
+		<p>jb.add(caidan);</p>
+		<p>jb.add(bianji);</p>
+		<p>jb.add(chakan);</p>
+		<p>this.setJMenuBar(jb);</p>
 		
-		JTextArea wenben = new JTextArea();
-		wenben.setBounds(0,0,500,500);
-		wenben.setLineWrap(true);
-		//this.add(wenben);
+		<p>JTextArea wenben = new JTextArea();</p>
+		<p>wenben.setBounds(0,0,500,500);</p>
+		<p>wenben.setLineWrap(true);</p>
+		<p>//this.add(wenben);</p>
 
-		xinjian.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e2){
-				MyText.this.add(wenben);
-				MyText.this.repaint();//刷新界面
-			}
-		});
+		<p>xinjian.addActionListener(new ActionListener(){
+		<p>	public void actionPerformed(ActionEvent e2){
+		<p>		MyText.this.add(wenben);
+		<p>		MyText.this.repaint();//刷新界面
+		<p>	}
+		<p>});
 		
-		baocun.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				//wenben.getText();
-				File file = new File("3.txt");
-				try{
-					file.createNewFile();
-					//char[] cc = new char[10];
-					String s = wenben.getText();
-					FileWriter fw = new FileWriter(file);
-					fw.write(s);
-					fw.close();
-					System.out.println(s);
-				}catch(Exception e1){
-					e1.printStackTrace();
-				}
-				
-			}
-		});
+		<p>baocun.addActionListener(new ActionListener(){</p>
+		<p>	public void actionPerformed(ActionEvent e){</p>
+		<p>		//wenben.getText();</p>
+		<p>		File file = new File("3.txt");</p>
+		<p>		try{</p>
+		<p>			file.createNewFile();</p>
+		<p>			//char[] cc = new char[10];</p>
+		<p>			String s = wenben.getText();</p>
+		<p>			FileWriter fw = new FileWriter(file);</p>
+		<p>			fw.write(s);</p>
+		<p>			fw.close();</p>
+		<p>			System.out.println(s);</p>
+		<p>		}catch(Exception e1){</p>
+		<p>			e1.printStackTrace();</p>
+		<p>		}</p>
+		<p>		
+		<p>	}</p>
+		<p>});</p>
 
 
-		this.setTitle("我的记事本");
-		this.setBounds(100,100,500,500);
-		this.setVisible(true);
-	}
+		<p>this.setTitle("我的记事本");</p>
+		<p>this.setBounds(100,100,500,500);</p>
+		<p>this.setVisible(true);</p>
+	<p>}</p>
 
-	public static void main(String[] args){
-		new MyText();
-	}
-}
-
+	<p>public static void main(String[] args){</p>
+	<p>	new MyText();</p>
+	<p>}</p>
+<p>}
+</p>
 </body>
 </html>
