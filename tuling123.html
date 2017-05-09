@@ -1,0 +1,90 @@
+<html>
+<title>
+
+</title>
+
+<body>
+
+<p>import jdk.nashorn.internal.parser.JSONParser;
+<p>import java.io.*;
+<p>import java.net.MalformedURLException;
+<p>import java.net.URL;
+<p>import java.net.URLConnection;
+<p>import java.util.Scanner;
+
+<p>public class RobotHttp {
+
+
+   <p> public static void main(String[] args){
+
+    <p>    Scanner scanner = new Scanner(System.in);
+
+      <p>  while(true){
+
+       <p>     String userTalk = scanner.next();
+
+        <p>    //URL
+
+          <p> String url = "http://www.tuling123.com/openapi/api?key=自己tuling123的Akey码="+userTalk;
+
+          <p>  try {
+
+           <p>     //创建URL对象
+
+            <p>    URL url1 = new URL(url);
+
+           <p>     //打开URL
+
+           <p>     URLConnection urlConnection = url1.openConnection();
+
+           <p>     //发起请求链接
+
+            <p>    urlConnection.connect();
+
+            <p>    //获取返回内容
+
+           <p>     //下载图片
+  
+
+                
+		<p>//读取元文件
+
+        <p>        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+         <p>       StringBuffer stringBuffer = new StringBuffer();
+
+         <p>       String s = "";
+
+         <p>       s = bufferedReader.readLine();
+
+         <p>       //JSONObject jsonObject = new JSONObject(s);
+
+           <p>     String[] strings = s.split(":");
+
+          <p>      String[] strings1 = strings[2].split("\"");
+
+
+
+          <p>      System.out.println(strings1[1]);
+
+
+          <p>      //System.out.println(bufferedReader.readLine());
+
+           <p>     //bufferedReader.readLine();
+
+            <p>    } catch (Exception e) {
+
+             <p>   e.printStackTrace();
+
+         <p>   }
+
+      <p>  }
+
+
+  <p>  }
+
+<p>}
+
+
+</body>
+</html>
