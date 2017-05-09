@@ -1,0 +1,107 @@
+<html>
+<title>
+IO流的输入输出
+</title>
+<body>
+
+<p>import java.io.*;</p>
+
+
+<p>public class Main {</p>
+
+
+ <p>   public static void main(String[] args)  {</p>
+
+	
+
+
+  <p>      //创建File实例</p>
+
+   <p>     File file = new File("src/com/test/Test.txt");</p>
+
+
+   <p>     //创建文件</p>
+
+   <p>     try {</p>
+<p>         file.createNewFile();</p>
+    <p>    } catch (IOException e) {</p>
+     <p>            e.printStackTrace();</p>
+  <p>         }</p>
+
+
+  <p>      //--------字节流输入输出------------------</p>
+
+    <p>    File file = new File("src/com/test/Test.txt");</p>
+
+
+    <p>    try {</p>
+
+     <p>       FileInputStream fileInputStream = new FileInputStream(file);</p>
+
+      <p>      byte[] bytes = new byte[10];</p>
+
+      <p>      int len = 0;</p>
+
+      <p>      StringBuffer snb = new StringBuffer();</p>
+
+
+      <p>      while((len = fileInputStream.read(bytes))!=-1){</p>
+
+       <p>         snb.append(new String(bytes,0,len));</p>
+
+       <p>     }</p>
+
+
+       <p>     FileOutputStream fileOutputStream = new FileOutputStream(file);</p>
+
+       <p>     String s = "songmunawefaefaeefeawfaewfaefewa";</p>
+
+       <p>     byte[] bytes = s.getBytes();</p>
+
+       <p>     fileOutputStream.write(bytes);</p>
+
+        <p>    fileInputStream.read(bytes);</p>
+
+        <p>    String ss = new String(bytes);</p>
+
+    
+
+
+
+  <p>      } catch (Exception e) {</p>
+
+  <p>          e.printStackTrace();</p>
+
+  <p>      }</p>
+
+
+
+  <p>  }</p>
+
+
+
+<p>    public static void findFile(File f){</p>
+
+<p>        if(f.isDirectory()){</p>
+
+<p>            File[] files = f.listFiles();</p>
+
+ <p>           for(File f1:files){</p>
+
+ <p>               findFile(f1);</p>
+
+ <p>           }</p>
+
+<p>        }else{</p>
+
+ <p>           System.out.println("path="+f.getAbsolutePath());</p>
+
+ <p>       }</p>
+
+ <p>   }</p>
+
+
+<p>}</p>
+
+</body>
+</html>
