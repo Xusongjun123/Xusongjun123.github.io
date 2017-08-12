@@ -1,0 +1,51 @@
+MySQL脚本的基本组成
+与常规的脚本语言类似, MySQL 也具有一套对字符、单词以及特殊符号的使用规定, mysql 通过执行 SQL 脚本来完成对数据库的操作, 该脚本由一条或多条MySQL语句(SQL语句 + 扩展语句)组成, 保存时脚本文件后缀名一般为 .sql。在控制台下, MySQL 客户端也可以对语句进行单句的执行而不用保存为.sql文件。
+标识符
+标识符用来命名一些对象, 如数据库、表、列、变量等, 以便在脚本中的其他地方引用。MySQL标识符命名规则稍微有点繁琐, 这里我们使用万能命名规则: 标识符由字母、数字或下划线(_)组成, 且第一个字符必须是字母或下划线。
+对于标识符是否区分大小写取决于当前的操作系统, Windows下是不敏感的, 但对于大多数 Linux\unix 系统来说, 这些标识符大小写是敏感的。
+ 
+关键字: MySQL的关键字众多, 这里不一一列出, 在学习中学习。 这些关键字有自己特定的含义, 尽量避免作为标识符。
+ 
+语句: MySQL语句是组成MySQL脚本的基本单位, 每条语句能完成特定的操作, 他是由 SQL 标准语句 + MySQL 扩展语句组成。
+ 
+函数: MySQL函数用来实现数据库操作的一些高级功能, 这些函数大致分为以下几类: 字符串函数、数学函数、日期时间函数、搜索函数、加密函数、信息函数。
+ 
+MySQL中的数据类型
+MySQL有三大类数据类型, 分别为数字、日期\时间、字符串, 这三大类中又更细致的划分了许多子类型:
+数字类型
+整数: tinyint、smallint、mediumint、int、bigint
+浮点数: float、double、real、decimal
+日期和时间: date、time、datetime、timestamp、year
+字符串类型
+字符串: char、varchar
+文本: tinytext、text、mediumtext、longtext
+二进制(可用来存储图片、音乐等): tinyblob、blob、mediumblob、longblob
+这里不能详细对这些类型进行介绍了, 篇幅可能会很长, 详细介绍参见: 《MySQL数据类型》 : http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html
+ 
+使用MySQL数据库
+登录到MySQL
+当 MySQL 服务已经运行时, 我们可以通过MySQL自带的客户端工具登录到MySQL数据库中, 首先打开命令提示符, 输入以下格式的命名:
+mysql -h 主机名 -u 用户名 -p
+-h : 该命令用于指定客户端所要登录的MySQL主机名, 登录当前机器该参数可以省略;
+-u : 所要登录的用户名;
+-p : 告诉服务器将会使用一个密码来登录, 如果所要登录的用户名密码为空, 可以忽略此选项。
+以登录刚刚安装在本机的MySQL数据库为例, 在命令行下输入 mysql -u root -p 按回车确认, 如果安装正确且MySQL正在运行, 会得到以下响应:
+Enter password:
+若密码存在, 输入密码登录, 不存在则直接按回车登录, 按照本文中的安装方法, 默认 root 账号是无密码的。登录成功后你将会看到 Welecome to the MySQL monitor... 的提示语。
+然后命令提示符会一直以 mysql> 加一个闪烁的光标等待命令的输入, 输入 exit 或 quit 退出登录。
+创建一个数据库
+使用 create database 语句可完成对数据库的创建, 创建命令的格式如下:
+create database 数据库名 [其他选项];
+例如我们需要创建一个名为 samp_db 的数据库, 在命令行下执行以下命令:
+create database samp_db character set gbk;
+为了便于在命令提示符下显示中文, 在创建时通过 character set gbk 将数据库字符编码指定为 gbk。创建成功时会得到 Query OK, 1 row affected(0.02 sec) 的响应。
+注意: MySQL语句以分号(;)作为语句的结束, 若在语句结尾不添加分号时, 命令提示符会以 -> 提示你继续输入(有个别特例, 但加分号是一定不会错的);
+提示: 可以使用 show databases; 命令查看已经创建了哪些数据库。
+选择所要操作的数据库
+要对一个数据库进行操作, 必须先选择该数据库, 否则会提示错误:
+ERROR 1046(3D000): No database selected
+两种方式对数据库进行使用的选择:
+一: 在登录数据库时指定, 命令: mysql -D 所选择的数据库名 -h 主机名 -u 用户名 -p
+例如登录时选择刚刚创建的数据库: mysql -D samp_db -u root -p
+二: 在登录后使用 use 语句指定, 命令: use 数据库名;
+use 语句可以不加分号, 执行 use samp_db 来选择刚刚创建的数据库, 选择成功后会提示: Database changed
