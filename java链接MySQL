@@ -72,3 +72,7 @@ public static void main(String[] args){
            } 
 } 
 }
+
+
+//注意：Java链接MySQL数据库需要加包mysql-connector-java-5.1.26-bin.jar是java链接mysql使用的jar包，
+与SQL SERVER链接也有专门的jar包，jar包中包含了java链接mysql所用到的函数驱动等等，所有的jar包都是放到web工程lib目录下
