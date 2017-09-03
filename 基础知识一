@@ -1,0 +1,56 @@
+一：java概述：
+1，JDK：Java Development Kit，java的开发和运行环境，java的开发工具和jre。
+
+2，JRE：Java Runtime Environment，java程序的运行环境，java运行的所需的类库+JVM(java虚拟机)。
+
+3，配置环境变量：让java jdk\bin目录下的工具，可以在任意目录下运行，原因是，将该工具所在目录告诉了系统，当使用该工具时，由系统帮我们去找指定的目录。
+
+环境变量的配置：
+
+1）：永久配置方式：JAVA_HOME=%安装路径%\Java\jdk
+
+     path=%JAVA_HOME%\bin
+
+    2）：临时配置方式：set path=%path%;C:\Program Files\Java\jdk\bin
+
+特点：系统默认先去当前路径下找要执行的程序，如果没有，再去path中设置的路径下找。
+
+classpath的配置:
+
+1）：永久配置方式：classpath=.;c:\;e:\
+
+    2）：临时配置方式：set classpath=.;c:\;e:\
+
+ 
+
+注意：在定义classpath环境变量时，需要注意的情况
+
+如果没有定义环境变量classpath，java启动jvm后，会在当前目录下查找要运行的类文件；
+
+如果指定了classpath，那么会在指定的目录下查找要运行的类文件。
+
+还会在当前目录找吗？两种情况：
+
+    
+
+CLASSPATH是什么？它的作用是什么？
+
+它是javac编译器的一个环境变量。它的作用与import、package关键字有关。当你写下improt java.util.*时，编译器面对import关键字时，就知道你要引入java.util这个package中的类；但是编译器如何知道你把这个package放在哪里了呢？所以你首先得告诉编译器这个package的所在位置；如何告诉它呢？就是设置CLASSPATH啦 :) 如果java.util这个package在c:/jdk/ 目录下，你得把c:/jdk/这个路径设置到CLASSPATH中去！当编译器面对import java.util.*这个语句时，它先会查找CLASSPATH所指定的目录，并检视子目录java/util是否存在，然后找出名称吻合的已编译文件（.class文件）。如果没有找到就会报错！CLASSPATH有点像c/c++编译器中的INCLUDE路径的设置哦，是不是？当c/c++编译器遇到include 这样的语句，它是如何运作的？哦，其实道理都差不多！搜索INCLUDE路径，检视文件！当你自己开发一个package时，然后想要用这个package中的类；自然，你也得把这个package所在的目录设置到CLASSPATH中去！CLASSPATH的设定，对JAVA的初学者而言是一件棘手的事。所以Sun让JAVA2的JDK更聪明一些。你会发现，在你安装之后，即使完全没有设定CLASSPATH，你仍然能够编译基本的JAVA程序，并且加以执行。
+
+ 
+
+PATH环境变量
+
+PATH环境变量。作用是指定命令搜索路径，在命令行下面执行命令如javac编译java程序时，它会到PATH变量所指定的路径中查找看是否能找到相应的命令程序。我们需要把jdk安装目录下的bin目录增加到现有的PATH变量中，bin目录中包含经常要用到的可执行文件如javac/java/javadoc等待，设置好PATH变量后，就可以在任何目录下执行javac/java等工具了。
+
+ 
+
+4，javac命令和java命令做什么事情呢？
+
+    要知道java是分两部分的：一个是编译，一个是运行。
+
+    javac：负责的是编译的部分，当执行javac时，会启动java的编译器程序。对指定扩展名的.java文件进行编译。 生成了jvm可以识别的字节码文件。也就是class文件，也就是java的运行程序。
+
+    java：负责运行的部分.会启动jvm.加载运行时所需的类库,并对class文件进行执行.
+
+    一个文件要被执行,必须要有一个执行的起始点,这个起始点就是main函数
